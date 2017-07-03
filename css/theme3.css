@@ -210,10 +210,10 @@ button{
             padding:9px 15px;
             display:inline-block;
             border-radius:3px 3px 0px 0px;
-            background:#7FB5DA;
+            background:#fff;
             font-size:16px;
             font-weight:600;
-            color:#4c4c4c;
+            color:#e84e1b;
             transition:all linear 0.15s;
         }
  
@@ -223,8 +223,8 @@ button{
         }
  
     li.active a, li.active a:hover {
-        background:#fff;
-        color:#4c4c4c;
+        background:#e84e1b;
+        color:#fff;
     }
  
     /*----- Content of Tabs -----*/

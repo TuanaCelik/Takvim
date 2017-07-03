@@ -7,17 +7,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="tabs.js"></script>
+    <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/sweetalert/dist/sweetalert.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="css/demo.css"/>
     <link rel="stylesheet" href="css/theme3.css"/>
   </head>
- <!--  <body> -->
+  <body>
     
     <div class="tabs">
         
         <ul class="tab-links">
           <li class="active"><a href="#caleandar">Takvim</a></li>
-          <li><a href="#odeme">Odeme Ekle</a></li>
+          <li><a href="#odeme">Ödeme Ekle</a></li>
         </ul>
 
         <div calss="tab-content">
@@ -102,12 +104,34 @@
         var aciklama = $("#odemeAciklama").val();
         var e = document.getElementById("odemeturu");
         var odemeTuru = e.options[e.selectedIndex].value;
-        //console.log(odemeTuru)
-        createEvent(odemeTuru, tarih, aciklama);
-       /* console.log(tarih);
-        console.log(aciklama);*/
+        if (!tarih){
+          console.log("hello");
+          swal("HATA!", "Lütfen tarih giriniz!", "error")
+        }else{
+
+          if(aciklama){
+            createEvent(odemeTuru, tarih, aciklama);
+            swal("Takvime Eklenmiştir!", "Başka ödemeler ekleyebilirsiniz...", "success"); 
+          }
+          else{
+            swal({
+              title: "Emin misiniz?",
+              text: "Açıklama kısmına bilgi girmeden devam etmek istiyor musunuz?",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Evet devam et!",
+              closeOnConfirm: false
+            },
+            function(){
+              createEvent(odemeTuru, tarih, aciklama);
+              swal("Takvime Eklenmiştir!", "Başka ödemeler ekleyebilirsiniz...", "success");
+            });
+          }
+         
+        }
       }
 
     </script>
- <!--  </body> -->
+ </body>
 </html>
