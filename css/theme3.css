@@ -1,0 +1,313 @@
+
+form{
+    float:left; 
+    display:inline; 
+    margin-left:20px;
+}
+img{
+  width: 200px;
+}
+div{
+  color:#e84e1b;
+  font-weight: bold;
+  font-size: 20px; 
+  font-family: Geneva, sans-serif;
+}
+input{
+   position: relative; /* Enable absolute positioning for children and pseudo elements */
+    width: 170px;
+    margin: 0 auto;
+    padding: 10px 15px;
+
+    /* Styles */
+    background: #fff;
+    border-left: 5px solid #1d2345;
+    cursor: pointer;
+    outline: none;
+    font-size: 15px; 
+    font-family: Geneva, sans-serif;
+}
+input[type=radio]{
+    position: relative; /* Enable absolute positioning for children and pseudo elements */
+    width: 100px;
+    margin: 0 auto;
+    padding: 5px 5px;
+    visibility:hidden;
+    display:none;
+
+    /* Styles */
+    background: #fff;
+    /*border: solid;
+    border-radius: 10px;*/
+}
+label {
+  color: #e84e1b;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 5px 20px;
+  font-family: Geneva, sans-serif;
+}
+  .radio-group{
+    border: solid;
+    border-radius: 8px;
+  }
+
+input[type=radio]:checked + label{
+  color: #fff;
+  background: #e84e1b;
+  border: solid;
+  border-radius: 8px;
+}
+
+button{
+    position: relative; /* Enable absolute positioning for children and pseudo elements */
+    width: 205px;
+    margin: 0 auto;
+    padding: 10px 15px;
+
+    /* Styles */
+    background: #e84e1b;
+    border-left: 5px solid #1d2345;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    font-size: 25px; 
+    font-family: Geneva, sans-serif;
+}
+.wrapper-dropdown-2 {
+    /* Size and position */
+    position: relative; /* Enable absolute positioning for children and pseudo elements */
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 15px;
+
+    /* Styles */
+    background: #fff;
+    border-left: 5px solid #1d2345;
+    cursor: pointer;
+    outline: none;
+    font-size: 20px; 
+    font-family: Geneva, sans-serif;
+}
+
+.cld-main{
+  float:left; display:inline; width: 660px;
+}
+.cld-main a{
+  color: #e84e1b;
+}
+  .cld-datetime{
+    position: relative;
+    width: 66%;
+    min-width: 100px;
+    max-width: 300px;
+    margin: auto;
+    overflow: hidden;
+  }
+  .cld-datetime .today{
+    position: relative;
+    float: left;
+    width: calc(100% - 40px);
+    margin: auto;
+    text-align: center;
+  }
+  .cld-nav{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+  .cld-nav:hover{
+    cursor: pointer;
+  }
+  .cld-nav:hover svg{
+      fill: #666;
+  }
+  .cld-rwd{
+    float: left;
+  }
+  .cld-fwd{
+    float: right;
+  }
+    .cld-nav svg:hover{
+
+    }
+.cld-labels, .cld-days{
+  padding-left: 0;
+}
+  .cld-label, .cld-day{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 14.28%;
+    text-align: center;
+  }
+  .cld-day{
+    display: block;
+    float: left;
+    position: relative;
+    margin: 0;
+    padding: 5px;
+    height: 66px;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+  }
+  .cld-day.clickable:hover{
+    cursor: pointer;
+  }
+  .cld-day.today{
+    border: 2px solid #1d2345;
+  }
+  .cld-day.disableDay{
+    opacity: 0.5;
+  }
+  .cld-day.nextMonth, .cld-day.prevMonth{
+    opacity: 0.33;
+  }
+    .cld-number{
+      margin: 0;
+      text-align: left;
+    }
+      .cld-title{
+        font-size: 10px;
+        display: block;
+        margin: 0;
+        font-weight: normal;
+      }
+      .cld-day:hover{
+        background: #eee;
+      }
+      .cld-number.eventday{
+        font-weight: bold;
+      }
+      .cld-number.eventday:hover{
+        background: #eee;
+      }
+      .today .cld-number.eventday:hover{
+      }
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#7FB5DA;
+            font-size:16px;
+            font-weight:600;
+            color:#4c4c4c;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:#a7cce5;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#fff;
+        color:#4c4c4c;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:15px;
+        border-radius:3px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+        }
+
+/*.wrapper-dropdown-2:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: grey transparent;
+}*/
+
+/*.wrapper-dropdown-2 .dropdown {
+  
+    position: absolute;
+    top: 100%;
+    left: -5px;
+    right: 0px;
+
+    background: white;
+    transition: all 0.3s ease-out;
+    list-style: none;
+
+    opacity: 0;
+    pointer-events: none;
+}*/
+
+/*.wrapper-dropdown-2 .dropdown li option {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    border-left: 5px solid;
+    padding: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-2 .dropdown1 { 
+    border-left-color: #00ACED;
+}
+
+.wrapper-dropdown-2 .dropdown2 {
+    border-left-color: #4183C4;
+}
+
+.wrapper-dropdown-2 .dropdown3 {
+    border-left-color: #3B5998;
+}
+
+.wrapper-dropdown-2 .dropdown li i {
+    margin-right: 5px;
+    color: inherit;
+    vertical-align: middle;
+}
+
+
+.wrapper-dropdown-2 .dropdown li:hover a {
+    color: grey;
+}
+
+.wrapper-dropdown-2.active:after {
+    border-width: 0 6px 6px 6px;
+}
+
+.wrapper-dropdown-2.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}*/
