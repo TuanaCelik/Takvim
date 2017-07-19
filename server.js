@@ -18,7 +18,7 @@ connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
   //console.log('The solution is: ', rows[0].solution);
 
   console.log("Bağlantı kuruldu...")
-  /*connection.query('DESCRIBE events', function(err, result){
+  connection.query('DESCRIBE events', function(err, result){
   	if (err) throw err
   	console.log(result)
   })
