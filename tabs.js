@@ -4,10 +4,10 @@ jQuery(document).ready(function() {
  
         // Show/Hide Tabs
         jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
- 
+ 		//jQuery('.tabs ' + currentAttrValue).tabs('load', $tabs.tabs('option', 'selected'));
         // Change/remove current tab to active
         jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
  
-        e.preventDefault();
+        //e.preventDefault();
     });
 });

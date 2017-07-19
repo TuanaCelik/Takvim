@@ -5,6 +5,7 @@
 */
 var check = 0;
 var obj;
+console.log("click");
 var Calendar = function(model, options, date){
   // Default Values
   this.Options = {

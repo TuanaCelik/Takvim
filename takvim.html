@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
+<!-- http://t4t5.github.io/sweetalert/ -->
 <html>
   <head>
     <meta charset=utf-8>
@@ -40,7 +41,7 @@
                 <div>
                   Ödeme Türü
                   <p>
-                  <select id="odemeturu" class="wrapper-dropdown-2">
+                      <select id="odemeturu" class="wrapper-dropdown-2">
                           <li><option class="dropdown1" value="kira">Kira</option></li>
                           <li><option class="dropdown2" value="fatura">Fatura</option></li>
                           <li><option class="dropdown3" value="aidat">Aidat</option></li>
@@ -105,7 +106,7 @@
         var tarih = $("#odemeTarihi").val();
         var aciklama = $("#odemeAciklama").val();
         var e = document.getElementById("odemeturu");
-        var odemeTuru = e.options[e.selectedIndex].value;
+        var odemeTuru = e.options[e.selectedIndex].value.toUpperCase();
         if (!tarih){
           console.log("hello");
           swal("HATA!", "Lütfen tarih giriniz!", "error")
@@ -137,3 +138,5 @@
     </script>
  </body>
 </html>
+
+<?php ?>
