@@ -24,7 +24,9 @@ function createEvent(tur, tarih, aciklama){
 	        console.log(response);
 	    },
 	    error: function(err){
+
 	    	console.log("deneme");
+	    
 	    	console.log("Hataaaaaaa!!!");
 	        alert(JSON.stringify(err));
 	    }
