@@ -5,12 +5,13 @@
 */
 var check = 0;
 var obj;
-console.log("click");
+var idToDelete;
+
 var Calendar = function(model, options, date){
   // Default Values
   this.Options = {
     Color: '#e84e1b',
-    LinkColor: '#e84e1b',
+    LinkColor: '#202430',
     NavShow: true,
     NavVertical: false,
     NavLocation: '',
@@ -46,16 +47,11 @@ var Calendar = function(model, options, date){
   this.Prev.Days = new Date(this.Prev.getFullYear(), (this.Prev.getMonth() + 1), 0).getDate();
 };
 
-/*function updateCalendar(el, events, set){
-  console.log("heyyay");
-  check = 1;
-  //createCalendar(obj, el);
-}
-*/
-function createCalendar(calendar, element, adjuster){
+function createCalendar(calendar, element, adjuster, update){
   if(typeof adjuster !== 'undefined'){
     var newDate = new Date(calendar.Selected.Year, calendar.Selected.Month + adjuster, 1);
-    calendar = new Calendar(calendar.Model, calendar.Options, newDate);
+    if(update == 1)calendar = new Calendar(calendar.Model, calendar.Options, newDate);
+
     element.innerHTML = '';
   }else{
     for(var key in calendar.Options){
@@ -83,7 +79,7 @@ function createCalendar(calendar, element, adjuster){
         x.className += ' cld-rwd cld-nav';
         x.addEventListener('click', function(){
           typeof calendar.Options.ModelChange == 'function'?calendar.Model = calendar.Options.ModelChange():calendar.Model = calendar.Options.ModelChange;
-          createCalendar(calendar, element, -1);
+          createCalendar(calendar, element, -1, 1);
         });
         x.innerHTML += '<svg height="15" width="15" viewBox="0 0 100 75" fill="rgba(255,255,255,0.5)"><polyline points="0,75 100,75 50,0"></polyline></svg>';
       }
@@ -91,7 +87,7 @@ function createCalendar(calendar, element, adjuster){
         x.className += ' cld-fwd cld-nav';
         x.addEventListener('click', function(){
           typeof calendar.Options.ModelChange == 'function'?calendar.Model = calendar.Options.ModelChange():calendar.Model = calendar.Options.ModelChange;
-          createCalendar(calendar, element, 1);} );
+          createCalendar(calendar, element, 1, 1);} );
         x.innerHTML += '<svg height="15" width="15" viewBox="0 0 100 75" fill="rgba(255,255,255,0.5)"><polyline points="0,0 100,0 50,75"></polyline></svg>';
       }
       else{
@@ -105,7 +101,7 @@ function createCalendar(calendar, element, adjuster){
           //x.addEventListener('click', function(){createCalendar(calendar, element, adj);console.log('kk', adj);} );
           x.addEventListener('click', function(){
             typeof calendar.Options.ModelChange == 'function'?calendar.Model = calendar.Options.ModelChange():calendar.Model = calendar.Options.ModelChange;
-            createCalendar(calendar, element, adj);} );
+            createCalendar(calendar, element, adj, 1);} );
           x.setAttribute('style', 'opacity:' + (1 - Math.abs(adj)/4));
           x.innerHTML += months[n].substr(0,3);
         }()); // immediate invocation
@@ -140,7 +136,7 @@ function createCalendar(calendar, element, adjuster){
       if(calendar.Options.NavShow && !calendar.Options.NavVertical){
         var rwd = document.createElement('div');
         rwd.className += " cld-rwd cld-nav";
-        rwd.addEventListener('click', function(){createCalendar(calendar, element, -1);} );
+        rwd.addEventListener('click', function(){createCalendar(calendar, element, -1, 1);} );
         rwd.innerHTML = '<svg height="15" width="15" viewBox="0 0 75 100" fill="rgba(0,0,0,0.5)"><polyline points="0,50 75,0 75,100"></polyline></svg>';
         datetime.appendChild(rwd);
       }
@@ -151,7 +147,7 @@ function createCalendar(calendar, element, adjuster){
       if(calendar.Options.NavShow && !calendar.Options.NavVertical){
         var fwd = document.createElement('div');
         fwd.className += " cld-fwd cld-nav";
-        fwd.addEventListener('click', function(){createCalendar(calendar, element, 1);} );
+        fwd.addEventListener('click', function(){createCalendar(calendar, element, 1, 1);} );
         fwd.innerHTML = '<svg height="15" width="15" viewBox="0 0 75 100" fill="rgba(0,0,0,0.5)"><polyline points="0,0 75,50 0,100"></polyline></svg>';
         datetime.appendChild(fwd);
       }
@@ -215,6 +211,7 @@ function createCalendar(calendar, element, adjuster){
       var number = DayNumber(i+1);
       // Check Date against Event Dates
       for(var n = 0; n < calendar.Model.length; n++){
+        //console.log("length " + calendar.Model.length)
         var evDate = calendar.Model[n].Date;
         var toDate = new Date(calendar.Selected.Year, calendar.Selected.Month, (i+1));
         if(evDate.getTime() == toDate.getTime()){
@@ -249,7 +246,26 @@ function createCalendar(calendar, element, adjuster){
             }
             title.appendChild(a);
           }else{
+            idToDelete   = calendar.Model[n].Id; 
+            //console.log(idToDelete);
+            //day.appendChild(idToDelete);
+            var butt = document.createElement("button");
+            //butt.type = "button";
+            butt.className = "button1";
+            var t = document.createTextNode("X");
+            butt.appendChild(t);
+            //console.log(butt);
+            butt.onclick = (function(idToDelete) {
+              var i = idToDelete;
+              return function() {
+                //console.log("clicked");
+                deleteEv(i);
+              }
+            })(idToDelete);
+            day.appendChild(butt);
+            //title.innerHTML +='<button class="button1">&#10006</button>';
             title.innerHTML += '<a href="' + calendar.Model[n].Link + '">' + calendar.Model[n].Title + '</a>';
+            title.innerHTML += '<p>' + calendar.Model[n].Explanation +  '</p>';
           }
           number.appendChild(title);
         }
@@ -303,7 +319,7 @@ function createCalendar(calendar, element, adjuster){
   AddDays();
 }
 
-function caleandar(el, data, settings){
+function caleandar(el, data, settings, update){
   obj = new Calendar(data, settings);
-  createCalendar(obj, el);
+  createCalendar(obj, el, update);
 }
